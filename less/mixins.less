@@ -1,0 +1,81 @@
+.make-grid-columns() {
+  // Common styles for all sizes of grid columns, widths 1-12
+  .col(@index) { // initial
+    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
+    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @grid-columns) { // terminal
+    @{list} {
+      position: relative;
+      box-sizing: border-box;  
+      flex: 0 0 100%; 
+      min-height: 1px;
+      padding-left:  ceil((@grid-gutter-width / 2));
+      padding-right: floor((@grid-gutter-width / 2));
+    }
+  }
+  .col(1); // kickstart it
+}
+
+.float-grid-columns(@class) {
+  .col(@index) { // initial
+    @item: ~".col-@{class}-@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) { // general
+    @item: ~".col-@{class}-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(1); // kickstart it
+}
+
+.calc-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
+  .col-@{class}-@{index} {
+    flex-basis: percentage((@index / @grid-columns));
+    max-width: percentage((@index / @grid-columns));
+  }
+}
+
+.loop-grid-columns(@index, @class, @type) when (@index >= 0) {
+  .calc-grid-column(@index, @class, @type);
+  // next iteration
+  .loop-grid-columns((@index - 1), @class, @type);
+}
+
+// Set align items for this class
+.alignment-class(@class) {
+     .align-bottom-@{class} {
+        align-items: flex-end;
+     };
+     
+     .align-top-@{class} {
+        align-items: flex-start;
+     };
+     
+     .align-center-@{class} {
+        align-items: center;
+     };
+}
+
+// Set justify content for this class
+.spacing-class(@class) {
+     .around-@{class} {
+        justify-content: space-around;
+     };
+     
+     .between-@{class} {
+        justify-content: space-between;
+     };
+}
+
+// Create grid for specific class
+.make-grid(@class) {
+  .float-grid-columns(@class);
+  .alignment-class(@class);
+  .spacing-class(@class);
+  .loop-grid-columns(@grid-columns, @class, width);
+}

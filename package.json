@@ -1,0 +1,29 @@
+{
+  "name": "grid",
+  "version": "0.0.1",
+  "description": "A super lightweight flex box grid. Written in LESS",
+  "main": "index.html",
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "clean-css": "^3.4.9",
+    "cssmin": "latest",
+    "less": "latest",
+    "serve": "^1.4.0",
+    "uglify": "^0.1.5"
+  },
+  "scripts": {
+    "start": "serve",
+    "build:css": "lessc less/grid.less > css/grid.css",
+    "postbuild:css": "postcss --use autoprefixer css/grid.css -d css/ | uglify -s css/styles.css -o css/grid.min.css -c",
+    "version:patch": "npm version patch",
+    "pretag": "npm run build:css",
+    "tag": "bower version patch -m 'Upgraded and tagged to version %s'",
+    "posttag": "git push --tags origin HEAD:master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spacebeers/flexbox-grid.git"
+  },
+  "author": "Andy Howell",
+  "license": "ISC"
+}

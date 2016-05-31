@@ -1,0 +1,29 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.box {
+    padding: 9px;
+    background: cornflowerblue;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.box .box {
+    border: 1px solid white;
+}
+
+.box.large {
+    height: 100px;
+}
+
+box.highlight {
+    background: darkblue;
+}
+
+
+@media (min-width: 768px) {
+    .box .box {
+        margin: 0;
+    }
+}

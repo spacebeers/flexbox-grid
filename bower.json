@@ -1,0 +1,20 @@
+{
+  "name": "grid",
+  "description": "A super lightweight flex box grid. Written in LESS",
+  "main": "index.html",
+  "version": "0.0.1",
+  "authors": [
+    "Andy Howell"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

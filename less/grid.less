@@ -1,0 +1,50 @@
+@import "variables";
+@import "mixins";
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  
+  @media (min-width: @screen-sm-min) {
+    width: @container-sm;
+  }
+  
+  @media (min-width: @screen-md-min) {
+    width: @container-md;
+  }
+  
+  @media (min-width: @screen-lg-min) {
+    width: @container-lg;
+  }
+}
+
+
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-right: -@column-gutter-width;
+  margin-left: -@column-gutter-width;
+  
+  &.reverse {
+      flex-direction: row-reverse;
+  }
+}
+
+.make-grid-columns();
+
+.make-grid(xs);
+
+@media (min-width: @screen-sm-min) {
+  .make-grid(sm);
+}
+
+@media (min-width: @screen-md-min) {
+  .make-grid(md);
+}
+
+@media (min-width: @screen-lg-min) {
+  .make-grid(lg);
+}
