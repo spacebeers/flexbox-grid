@@ -5,6 +5,8 @@ swapping it in / out of projects that bit easier and make using it a lot less of
 
 Pull the project in via Bower and include the `grid.less` file in your project. 
 
+```bower install flexbox-grid```
+
 ## Changes
 
 * To make changes clone this project and run `npm install`
