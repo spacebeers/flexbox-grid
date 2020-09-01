@@ -8,7 +8,7 @@
     "clean-css": "^3.4.9",
     "cssmin": "latest",
     "less": "latest",
-    "serve": "^1.4.0",
+    "serve": "^11.3.2",
     "uglify": "^0.1.5"
   },
   "scripts": {
